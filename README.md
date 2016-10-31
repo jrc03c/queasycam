@@ -26,15 +26,27 @@ void draw(){
 
 Here's the full API.
 
+*Variables*
+
 `controllable` = a boolean that lets you turn on / off the mouse / keyboard controls
+
 `speed` = a float value that represents the speed coefficient of the camera
+
 `velocity` = a 3D PVector that represents the direction and magnitude of movement of the camera in space
+
 `sensitivity` = a float value that represents the mouse sensitivity coefficient of the camera
+
 `position` = a 3D PVector that represents the position of the camera
 `pan` = a float value that represents the rotation of the camera around the vertical axis
+
 `tilt` = a float value that represents the rotation of the camera around the horizontal axis
+
 `friction` = a float value that represents how much the camera slides as it moves around
 
+*Functions*
+
 `getForward()` = returns the forward-pointing PVector of the camera
+
 `getUp()` = returns the upward-pointing PVector of the camera
+
 `getRight()` = returns the rightward-pointing PVector of the camera
