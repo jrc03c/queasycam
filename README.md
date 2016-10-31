@@ -44,6 +44,4 @@ Here's the full API.
 
 `getForward()` = returns the forward-pointing PVector of the camera
 
-`getUp()` = returns the upward-pointing PVector of the camera
-
 `getRight()` = returns the rightward-pointing PVector of the camera
