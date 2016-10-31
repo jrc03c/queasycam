@@ -42,6 +42,10 @@ public class QueasyCam {
 	public float speed;
 	public float sensitivity;
 	public PVector position;
+	public float pan;
+	public float tilt;
+	public PVector velocity;
+	public float friction;
 
 	private PApplet applet;
 	private Robot robot;
@@ -49,12 +53,8 @@ public class QueasyCam {
 	private PVector up;
 	private PVector right;
 	private PVector forward;
-	private PVector velocity;
 	private Point mouse;
 	private Point prevMouse;
-	private float pan;
-	private float tilt;
-	private float friction;
 	private HashMap<Character, Boolean> keys;
 
 	public QueasyCam(PApplet applet){
@@ -157,6 +157,18 @@ public class QueasyCam {
 		if (x > max) return max;
 		if (x < min) return min;
 		return x;
+	}
+	
+	public PVector getForward(){
+		return forward;
+	}
+	
+	public PVector getUp(){
+		return up;
+	}
+	
+	public PVector getRight(){
+		return right;
 	}
 }
 
