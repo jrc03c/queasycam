@@ -53,6 +53,7 @@ public class QueasyCam {
 	private PVector up;
 	private PVector right;
 	private PVector forward;
+    private PVector target;
 	private Point mouse;
 	private Point prevMouse;
 	private HashMap<Character, Boolean> keys;
@@ -81,6 +82,31 @@ public class QueasyCam {
 
 		applet.perspective(PConstants.PI/3f, (float)applet.width/(float)applet.height, 0.01f, 1000f);
 	}
+    
+    public QueasyCam(PApplet applet, float near, float far){
+        this.applet = applet;
+        applet.registerMethod("draw", this);
+        applet.registerMethod("keyEvent", this);
+        
+        try {
+            robot = new Robot();
+        } catch (Exception e){}
+        
+        controllable = true;
+        speed = 3f;
+        sensitivity = 2f;
+        position = new PVector(0f, 0f, 0f);
+        up = new PVector(0f, 1f, 0f);
+        right = new PVector(1f, 0f, 0f);
+        forward = new PVector(0f, 0f, 1f);
+        velocity = new PVector(0f, 0f, 0f);
+        pan = 0f;
+        tilt = 0f;
+        friction = 0.75f;
+        keys = new HashMap<Character, Boolean>();
+        
+        applet.perspective(PConstants.PI/3f, (float)applet.width/(float)applet.height, near, far);
+    }
 
 	public void draw(){
 		if (!controllable) return;
@@ -124,6 +150,8 @@ public class QueasyCam {
 		forward = new PVector(PApplet.cos(pan), PApplet.tan(tilt), PApplet.sin(pan));
 		forward.normalize();
 		right = new PVector(PApplet.cos(pan - PConstants.PI/2), 0, PApplet.sin(pan - PConstants.PI/2));
+        
+        target = PVector.add(position, forward);
 		
 		prevMouse = new Point(mouse.x, mouse.y);
 		
@@ -152,6 +180,20 @@ public class QueasyCam {
 				break;
 		}
 	}
+    
+    public void beginHUD()
+    {
+        g.pushMatrix();
+        g.hint(DISABLE_DEPTH_TEST);
+        g.resetMatrix();
+        g.applyMatrix(originalMatrix);
+    }
+    
+    public void endHUD()
+    {
+        g.hint(ENABLE_DEPTH_TEST);
+        g.popMatrix();
+    }
 	
 	private float clamp(float x, float min, float max){
 		if (x > max) return max;
@@ -170,5 +212,10 @@ public class QueasyCam {
 	public PVector getRight(){
 		return right;
 	}
+    
+    public PVector getTarget(){
+        return target;
+    }
+    
 }
 
