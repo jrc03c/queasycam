@@ -1,3 +1,5 @@
+**NOTE: THIS PROJECT IS NO LONGER ACTIVELY MAINTAINED. I'LL LEAVE IT UNARCHIVED SO THAT PEOPLE CAN CREATE AND COMMENT ON ISSUES WITH EACH OTHER, BUT I DON'T PLAN TO MAKE ANY MORE CHANGES TO IT ANY TIME SOON. THANKS!**
+
 **QueasyCam** is a super-simple first-person-shooter camera for 3D Processing sketches. It steals its name and its desired ease of use from [PeasyCam](http://mrfeinberg.com/peasycam/). A QueasyCam camera can be controlled using the mouse and WASD keys (as well as Q and E for upward and downward motion).
 
 Here's an example. Setting the camera speed and sensitivity are optional.
